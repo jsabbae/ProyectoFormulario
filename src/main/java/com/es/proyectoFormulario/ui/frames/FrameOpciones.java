@@ -13,7 +13,7 @@ public class FrameOpciones extends JFrame {
         this.setIconImage(imagenOpciones.getImage());
         this.setResizable(false);
 
-        PanelOpciones po = new PanelOpciones();
+        PanelOpciones po = new PanelOpciones(null);
         this.setVisible(true);
     }
 }

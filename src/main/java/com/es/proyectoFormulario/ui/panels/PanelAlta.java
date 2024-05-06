@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class PanelAlta extends JPanel {
+    private FrameLogin framePadre;
     /*
     - 1. longitud máxima de todos los campos 20
     - 2. NO pueden contener el simbolo :

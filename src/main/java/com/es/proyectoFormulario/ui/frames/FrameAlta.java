@@ -14,7 +14,7 @@ public class FrameAlta extends JFrame {
         this.setIconImage(image.getImage());
         this.setResizable(false);
 
-        PanelAlta panelAlta = new PanelAlta();
+        PanelAlta panelAlta = new PanelAlta(null);
         this.add(panelAlta);
 
         this.setVisible(true);
