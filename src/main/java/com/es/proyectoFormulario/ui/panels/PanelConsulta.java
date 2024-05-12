@@ -1,16 +1,22 @@
 package main.java.com.es.proyectoFormulario.ui.panels;
 
+import main.java.com.es.proyectoFormulario.ui.frames.FrameLogin;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class PanelConsulta {
+public class PanelConsulta extends JPanel {
+    private FrameLogin framePadre;
     private JButton consultar;
     private JTextField idUser;
     private JTextArea texto;
     private JButton volver;
 
 
-    public PanelConsulta() {
+    public PanelConsulta(FrameLogin framePadre) {
+
+        this.framePadre = framePadre;
+
         idUser = new JTextField();
         idUser.setLocation(new Point(150, 150));
         idUser.setSize(new Dimension(152, 32));

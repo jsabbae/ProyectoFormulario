@@ -89,9 +89,9 @@ public class GestionFicheroUser {
                 fa = new FileWriter(fichero, true);
                 ba = new BufferedWriter(fa);
 
+                ba.write("\n");
                 ba.write(users.getId()+ ":"+ users.getName()+ ":"+ users.getPass()+ ":");
                 ba.write(users.isAdmin()+ "");
-                ba.write("\n");
 
                 ba.close();
                 fa.close();

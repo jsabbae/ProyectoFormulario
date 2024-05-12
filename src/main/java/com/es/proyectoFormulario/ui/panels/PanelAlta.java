@@ -1,7 +1,7 @@
 package main.java.com.es.proyectoFormulario.ui.panels;
 
+import main.java.com.es.proyectoFormulario.model.User;
 import main.java.com.es.proyectoFormulario.services.impl.ServiceUser;
-import main.java.com.es.proyectoFormulario.ui.frames.FrameAlta;
 import main.java.com.es.proyectoFormulario.ui.frames.FrameLogin;
 
 import javax.swing.*;
@@ -20,21 +20,24 @@ public class PanelAlta extends JPanel {
 
 
     //  VINCULAMOS
-
-    JTextField user;
-    JTextField nombre;
-    JTextField pass;
-    JTextField pass2;
-    JTextField isAdmin;
-    Button alta;
-
-    ServiceUser serviceUser = new ServiceUser();
-    MouseListener listenerMouse = new MouseAdapter() {
+    private FrameLogin framePadre;
+    private JTextField user;
+    private JTextField nombre;
+    private JTextField pass;
+    private JTextField pass2;
+    private JTextField isAdmin;
+    private JButton alta;
+    private JButton atras;
+    private JLabel labelError;
+    private ServiceUser serviceUser = new ServiceUser();
+    MouseListener listenerMouseAlta = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (pass.getText().equalsIgnoreCase(pass2.getText())) {
+            if (pass.getText().equalsIgnoreCase(pass2.getText()) && !serviceUser.userExists(user.getText()) && !user.getText().contains(":")) {
                 System.out.println("Has creado un usuario");
+                serviceUser.anadirFicheroUsers(new User(user.getText(), nombre.getText(), pass2.getText(), Boolean.parseBoolean(isAdmin.getText())));
             } else {
+                labelError.setVisible(true);
                 System.out.println("Pa tu casa");
             }
         }
@@ -86,7 +89,7 @@ public class PanelAlta extends JPanel {
         passwordAlta.setSize(new Dimension(152, 32));
         this.add(passwordAlta);
 
-        pass = new JTextField();
+        pass = new JPasswordField();
         pass.setLocation(new Point(250, 150));
         pass.setSize(new Dimension(152, 32));
         this.add(pass);
@@ -96,7 +99,7 @@ public class PanelAlta extends JPanel {
         password2Alta.setSize(new Dimension(152, 32));
         this.add(password2Alta);
 
-        pass2 = new JTextField();
+        pass2 = new JPasswordField();
         pass2.setLocation(new Point(250, 200));
         pass2.setSize(new Dimension(152, 32));
         this.add(pass2);
@@ -122,11 +125,28 @@ public class PanelAlta extends JPanel {
         this.add(isAdmin);
 
 
-        alta = new Button("Alta");
+        alta = new JButton("Alta");
         alta.setLocation(new Point(225, 400));
         alta.setSize(200, 50);
+        alta.addMouseListener(listenerMouseAlta);
         this.add(alta);
-    //    alta.addActionListener(listenerMouse);
+
+
+        //  No esta haciendo ninguna acción el botón atras de momento
+        atras = new JButton("Volver");
+        atras.setLocation(new Point(20, 521));
+        atras.setSize(new Dimension(152, 32));
+        atras.setBackground(new Color(208, 223, 232));
+        atras.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+        this.add(atras);
+
+        labelError = new JLabel("El usuario ya existe o la conntraseña no coincide");
+        labelError.setFont(new Font("Consolas", Font.ITALIC, 10));
+        labelError.setForeground(new Color(255, 0, 0));
+        labelError.setBounds(230, 250, 200, 32);
+        labelError.setVisible(false);
+        this.add(labelError);
+
 
     }
 }
