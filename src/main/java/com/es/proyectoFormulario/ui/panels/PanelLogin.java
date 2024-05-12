@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 public class PanelLogin extends JPanel {
     private JTextField user;
     private JTextField pass;
+<<<<<<< HEAD
     private JLabel labelError;
     private JButton bEnviar;
     private JButton bAlta;
@@ -20,6 +21,15 @@ public class PanelLogin extends JPanel {
 
     //  Este es el FramePadre de este panel
     private FrameLogin framePadre;
+=======
+    private  JLabel labelError;
+    private JButton bEnviar;
+    private JButton bAlta;
+
+    // Este es el FramePadre de este panel
+    private FrameLogin framePadre;
+
+>>>>>>> origin/master
     private ServiceUser serviceUser = new ServiceUser();
 
     private MouseListener listenerMouseCambiarAspecto = new MouseAdapter() {
@@ -44,7 +54,11 @@ public class PanelLogin extends JPanel {
         @Override
         public void mouseReleased(MouseEvent e) {
             JButton b = (JButton) e.getSource();
+<<<<<<< HEAD
             b.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+=======
+            b.setBorder(new LineBorder(new Color(0,0,0), 2));
+>>>>>>> origin/master
         }
     };
 
@@ -74,8 +88,12 @@ public class PanelLogin extends JPanel {
 
     public PanelLogin(FrameLogin framePadre) {
 
+        // Vinculamos this.framePadre con el framePadre que viene por parámetros -> Este framePadre es la instancia de la clase FrameLogin
         this.framePadre = framePadre;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         this.setBackground(new Color(0xDFDCDC));
         this.setLayout(null);
 
@@ -85,7 +103,7 @@ public class PanelLogin extends JPanel {
         // usuario.setFont(new Font("Consolas", Font.BOLD, 22));
         this.add(usuario);
 
-        user = new JTextField("Introduzca su usuario");
+        user = new JTextField();
         user.setLocation(new Point(260, 135));
         user.setSize(new Dimension(152, 32));
         this.add(user);
@@ -100,20 +118,29 @@ public class PanelLogin extends JPanel {
         pass.setSize(new Dimension(152, 32));
         this.add(pass);
 
-
         bEnviar = new JButton("Enviar");
         bEnviar.setLocation(new Point(120, 321));
         bEnviar.setSize(new Dimension(152, 32));
+<<<<<<< HEAD
         bEnviar.setBackground(new Color(208, 223, 232));
         bEnviar.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+=======
+        bEnviar.setBackground(new Color(208, 223, 232)); // Fondo azul medio
+        bEnviar.setBorder(new LineBorder(new Color(0,0,0), 2));
+>>>>>>> origin/master
         bEnviar.addMouseListener(listenerMouseEnviar);
         bEnviar.addMouseListener(listenerMouseCambiarAspecto);
         this.add(bEnviar);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         bAlta = new JButton("Alta");
         bAlta.setLocation(new Point(320, 321));
         bAlta.setSize(new Dimension(152, 32));
         bAlta.setBackground(new Color(208, 223, 232));
+<<<<<<< HEAD
         bAlta.setBorder(new LineBorder(new Color(0, 0, 0), 2));
         bAlta.addMouseListener(listenerMouseAlta);
         this.add(bAlta);
@@ -130,20 +157,35 @@ public class PanelLogin extends JPanel {
         labelError.setFont(new Font("Consolas", Font.ITALIC, 10));
         labelError.setForeground(new Color(255, 0, 0));
         labelError.setBounds(230, 250, 200, 32);
+=======
+        bAlta.setBorder(new LineBorder(new Color(0,0,0), 2));
+        // Añadimos el mouseListener
+        bAlta.addMouseListener(listenerMouseAlta);
+        this.add(bAlta);
+
+        labelError = new JLabel("Usuario o contraseña incorrectos");
+        labelError.setFont(new Font("Consolas", Font.ITALIC, 10));
+        labelError.setForeground(new Color(255,0,0));
+        labelError.setBounds(230, 250, 200,32);
+>>>>>>> origin/master
         labelError.setVisible(false);
         this.add(labelError);
 
     }
 
     private void cargarPanelAlta() {
+<<<<<<< HEAD
         //  ELIMINAMOS THIS PanelLogin ... este ... no otro.
+=======
+        // ELIMINAMOS THIS PanelLogin
+>>>>>>> origin/master
         framePadre.remove(this);
 
-        //  AÑADIMOS UN PANEL ALTA AL  ¡¡¡¡¡FRAME!!!!!!
+        // AÑADIMOS UN PANEL ALTA AL ¡¡¡FRAME!!!
         PanelAlta panelAlta = new PanelAlta(framePadre);
         framePadre.add(panelAlta);
 
-        //  ULTIMO: REPINTAR AL FRAME
+        // ULTIMO: REPINTAR EL FRAME
         framePadre.repaint();
         framePadre.revalidate();
     }
@@ -160,4 +202,18 @@ public class PanelLogin extends JPanel {
         framePadre.repaint();
         framePadre.revalidate();
     }
+
+    private void cargarPanelOpciones() {
+        // ELIMINAMOS THIS PanelLogin
+        framePadre.remove(this);
+
+        // AÑADIMOS UN PANEL OPCIONES AL ¡¡¡FRAME!!!
+        PanelOpciones panelOpciones = new PanelOpciones(framePadre);
+        framePadre.add(panelOpciones);
+
+        // ULTIMO: REPINTAR EL FRAME
+        framePadre.repaint();
+        framePadre.revalidate();
+    }
+
 }
