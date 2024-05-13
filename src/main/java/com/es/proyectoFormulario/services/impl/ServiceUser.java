@@ -39,6 +39,16 @@ public class ServiceUser {
         return this.users.stream().anyMatch(user -> user.getId().equalsIgnoreCase(idUser));
 
     }
+    public boolean nameExists(String nameUser){
+        return this.users.stream().anyMatch(user -> user.getName().equalsIgnoreCase(nameUser));
+    }
+    public boolean passwordExists(String passwordUser){
+        return this.users.stream().anyMatch(user -> user.getPass().equalsIgnoreCase(passwordUser));
+    }
+    public boolean isAdminExists(String isAdminUser){
+        
+        return this.users.stream().anyMatch(user -> (user.isAdmin().equalsIgnoreCase(isAdminUser)));
+    }
 
 
     public void leerFicheroUsers() {
