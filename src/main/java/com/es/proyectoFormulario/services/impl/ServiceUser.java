@@ -46,7 +46,7 @@ public class ServiceUser {
         return this.users.stream().anyMatch(user -> user.getPass().equalsIgnoreCase(passwordUser));
     }
     public boolean isAdminExists(String isAdminUser){
-        
+
         return this.users.stream().anyMatch(user -> (user.isAdmin().equalsIgnoreCase(isAdminUser)));
     }
 
