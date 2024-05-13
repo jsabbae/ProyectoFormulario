@@ -4,7 +4,6 @@ package main.java.com.es.proyectoFormulario.services.impl;
 import main.java.com.es.proyectoFormulario.model.User;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ServiceUser {
 
@@ -46,8 +45,9 @@ public class ServiceUser {
         return this.users.stream().anyMatch(user -> user.getPass().equalsIgnoreCase(passwordUser));
     }
     public boolean isAdminExists(String isAdminUser){
-
-        return this.users.stream().anyMatch(user -> (user.isAdmin().equalsIgnoreCase(isAdminUser)));
+        User userBoolean = null;
+        String isAdmin = String.valueOf(userBoolean.isAdmin());
+        return this.users.stream().anyMatch(user -> (isAdmin.equalsIgnoreCase(isAdminUser)));
     }
 
 
@@ -59,7 +59,7 @@ public class ServiceUser {
         gestionUser.anadirFichero(u, ruta);
     }
 
-    public void modificarFicheroUsers() {
+    public void modificarFicheroUsers(User user) {
         gestionUser.modificarFichero(this.users, ruta);
     }
 }

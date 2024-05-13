@@ -1,5 +1,6 @@
 package main.java.com.es.proyectoFormulario.ui.panels;
 
+import main.java.com.es.proyectoFormulario.model.User;
 import main.java.com.es.proyectoFormulario.services.impl.ServiceUser;
 import main.java.com.es.proyectoFormulario.ui.frames.FrameLogin;
 
@@ -28,29 +29,31 @@ public class PanelBaja extends JPanel {
     private JButton baja;
     private JButton volver;
     ServiceUser serviceUser = new ServiceUser();
-    MouseListener ListenerMouseBaja = new MouseAdapter() {
+    MouseListener listenerMouseBaja = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
+
             if (serviceUser.userExists(idUser_baja.getText()) &&
-            serviceUser.nameExists(nombreUser.getText())) {
+            serviceUser.nameExists(nombreUser.getText()) &&
+            serviceUser.passwordExists(password_baja.getText()) &&
+            serviceUser.isAdminExists(isAdmin_baja.getText())) {
+
+                serviceUser.modificarFicheroUsers(new User("", "", "", Boolean.parseBoolean("")));
 
             } else {
-
+                System.out.println("Error al introducir las credenciales");
             }
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
             JButton b = (JButton) e.getSource();
-            b.setBackground(new Color(135, 206, 250));
-            b.setBorder(new LineBorder(new Color(0, 115, 183), 3));
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             JButton b = (JButton) e.getSource();
-            b.setBackground(new Color(102, 153, 204));
-            b.setBorder(new LineBorder(new Color(135, 206, 250), 3));
+
         }
     };
 
@@ -125,6 +128,7 @@ public class PanelBaja extends JPanel {
         baja.setLocation(new Point(250, 460));
         baja.setSize(new Dimension(152, 32));
         baja.setBackground(new Color(211, 95, 95, 184));
+        baja.addMouseListener(listenerMouseBaja);
         this.add(baja);
 
         volver = new JButton("ATRAS");
